@@ -2,17 +2,18 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import fs from 'fs';
-import AdmZip from 'adm-zip';
 import {defineConfig, type Plugin} from 'vite';
 
 function zipDownloaderPlugin(): Plugin {
   return {
     name: 'zip-downloader',
     configureServer(server) {
-      server.middlewares.use((req, res, next) => {
+      server.middlewares.use(async (req, res, next) => {
         const url = req.url || '';
         if (url === '/proyecto.zip' || url === '/download-zip' || url.endsWith('/proyecto.zip')) {
           try {
+            const AdmZipModule = await import('adm-zip');
+            const AdmZip = AdmZipModule.default || (AdmZipModule as any);
             const zip = new AdmZip();
             
             // Add folders
