@@ -1,0 +1,6 @@
+{
+  "name": "REVERDECE Amoblados",
+  "description": "Página de ventas premium para alquileres turísticos de lujo frente al mar en Cartagena, Colombia.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
